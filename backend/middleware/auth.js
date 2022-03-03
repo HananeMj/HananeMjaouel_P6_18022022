@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-//const dotenv = require('dotenv').config();
 
 module.exports = (req, res, next) => {
   try {
@@ -12,8 +11,8 @@ module.exports = (req, res, next) => {
       next();
     }
   } catch {
-    res.status(401).json({
-      error: new Error('Requête invalide!')
+    res.status(403).json({
+      message: 'Action non autorisée !!'
     });
   }
 };
