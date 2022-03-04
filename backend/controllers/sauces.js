@@ -1,5 +1,5 @@
 const Sauce = require("../models/Sauce");
-const fs = require("fs"); //donne accès aaux systeme de fichiers
+const fs = require("fs"); //donne accès aux systeme de fichiers
 const dotenv = require("dotenv").config();
 const jwt = require('jsonwebtoken');
 
