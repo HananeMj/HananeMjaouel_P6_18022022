@@ -1,12 +1,12 @@
-const Sauce = require("../models/Sauce");
+const Sauce = require("../models/Sauce"); //import du modèle de sauce
 const fs = require("fs"); //donne accès aux systeme de fichiers
-const dotenv = require("dotenv").config();
-const jwt = require('jsonwebtoken');
+const dotenv = require("dotenv").config();//permet de créer des variables d'environnement
+const jwt = require("jsonwebtoken");//création de Tokens
 
 //créer une sauce
 exports.createSauce = (req, res, next) => {
+  //récupérer les champs du corps de la requête
   const sauceObject = JSON.parse(req.body.sauce);
-
   console.log(JSON.stringify(sauceObject));
   delete sauceObject._id;
   const sauce = new Sauce({
@@ -19,6 +19,7 @@ exports.createSauce = (req, res, next) => {
     usersLiked: [],
     usersDisliked: [],
   });
+  //enregistrer la sauce dans la BDD
   sauce
     .save()
     .then(() => {
@@ -81,8 +82,8 @@ exports.modifySauce = (req, res, next) => {
 
 //Supprimer une sauce
 exports.deleteSauce = (req, res, next) => {
-  //Recuprer le userId du token pour n'autoriser
-  //que l'utilisateur qui a creer la sauce de la supprimer
+  //Récupérer le userId du token pour n'autoriser
+  //que l'utilisateur qui a créer la sauce de la supprimer
   const token = req.headers.authorization.split(" ")[1];
   const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
   const userId = decodedToken.userId;

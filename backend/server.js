@@ -1,5 +1,5 @@
-const http = require('http');
-const app = require('./app');
+const http = require('http');//création d'un package HTTP natif de Node et utilisation pour créer un serveur
+const app = require('./app');//importation du app.js
 
 //renvoie un port valide
 const normalizePort = val => {
@@ -36,7 +36,7 @@ const errorHandler = error => {
       throw error;
   }
 };
-
+//créer un serveur
 const server = http.createServer(app);
 
 server.on('error', errorHandler);

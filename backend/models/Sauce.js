@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 //schéma de données 
 const sauceSchema = mongoose.Schema({
+  //différents champs dont sauce aura besoin
   userId: { type: String, required: true },
   name: {type: String, required: true},
   manufacturer: {type: String, required: true},
