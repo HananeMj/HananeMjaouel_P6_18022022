@@ -1,12 +1,13 @@
-const bcrypt = require('bcrypt');//package qui permet de crypter les mots de passe
+const bcrypt = require('bcrypt');//package qui permet de hasher les mots de passe
 const User = require('../models/User');
+//Permet de créer des Tokens 
 const jwt = require('jsonwebtoken');
 //importation de crypto-js pour crypter l'email
 const cryptoJs = require('crypto-js');
 
  //créer un nouvel utilisateur
 exports.signup = (req, res, next) => {
-    bcrypt.hash(req.body.password, 10)//hacher le mot de passe et salé 10 fois(combien de fois sera exécuter le hashage)
+    bcrypt.hash(req.body.password, 10)//hasher le mot de passe et salé 10 fois(combien de fois sera exécuter le hashage)
       .then(hash => {
         const user = new User({
            //crypter l'email avant de l'envoyer dans la base de données
